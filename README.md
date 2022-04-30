@@ -7,7 +7,7 @@ Support is not provided as this is a free extension.
 Install it by:  
 visiting the [chrome web store](https://chrome.google.com/webstore/detail/linkclump/lfpjkncokllnfokkgpkobnkbkmelfefj)  
 or  
-visiting the [mozilla addon store (coming soon)](https://addons.mozilla.org)
+visiting the [mozilla addon store](https://addons.mozilla.org/en-US/firefox/addon/linkclump-for-firefox)
 
 ## Build
 The build process uses ant (run `ant` at the command line) and will run tests and create a zip file that can be uploaded to the chrome store. From docker:
