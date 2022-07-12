@@ -13,11 +13,16 @@ Array.prototype.unique = function () {
 	return a;
 };
 
-function openTab(urls, delay, windowId, tabPosition, closeTime) {
+function openTab(urls, delay, windowId, tabPosition, closeTime, background) {
 	var obj = {
 		windowId: windowId,
-		url: urls.shift().url
+		url: urls.shift().url,
+		active: false
 	};
+
+	if (!background) {
+		obj = { ...obj, active: true }
+	}
 
 	if (tabPosition != null) {
 		obj.index = tabPosition;
@@ -33,7 +38,7 @@ function openTab(urls, delay, windowId, tabPosition, closeTime) {
 	});
 
 	if (urls.length > 0) {
-		window.setTimeout(function () { openTab(urls, delay, windowId, tabPosition, closeTime) }, delay * 1000);
+		window.setTimeout(function () { openTab(urls, delay, windowId, tabPosition, closeTime, background) }, delay * 1000);
 	}
 
 }
@@ -154,7 +159,7 @@ function handleRequests(request, sender, callback) {
 							// focused: !request.setting.options.unfocus
 						}, function (window) {
 							if (request.urls.length > 0) {
-								openTab(request.urls, request.setting.options.delay, window.id, null, 0);
+								openTab(request.urls, request.setting.options.delay, window.id, null, 0, request.setting.options.background);
 							}
 						});
 
@@ -172,7 +177,7 @@ function handleRequests(request, sender, callback) {
 								tab_index = tab.index + 1;
 							}
 
-							openTab(request.urls, request.setting.options.delay, window.id, tab_index, request.setting.options.close);
+							openTab(request.urls, request.setting.options.delay, window.id, tab_index, request.setting.options.close, request.setting.options.background);
 						})
 					});
 					break;

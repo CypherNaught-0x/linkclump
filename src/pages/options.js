@@ -13,7 +13,7 @@ var config = {
 		},
 		"tabs": {
 			"name": "Opened as New Tabs",
-			"options": ["smart", "ignore", "delay", "close", "block", "reverse", "end"]
+			"options": ["smart", "ignore", "delay", "close", "block", "reverse", "end", "background"]
 		},
 		"bm": {
 			"name": "Bookmarked",
@@ -72,6 +72,11 @@ var config = {
 			"name": "do not focus on new window",
 			"type": "checkbox",
 			"extra": "select to stop the new window from coming to the front"
+		},
+		"background": {
+			"name": "open tabs in the background",
+			"type": "checkbox",
+			"extra": "select to have created tabs be opened without getting focused"
 		}
 	}
 };
@@ -180,14 +185,14 @@ function delete_action(id, div) {
 	div.fadeOut("swing", function () {
 		var del = $("<div class='undo'>Action has been deleted </div>");
 		var undo = $("<a>undo</a>").click({
-				"i": id,
-				"param": params.actions[id]
-			},
+			"i": id,
+			"param": params.actions[id]
+		},
 			function (event) {
 				div_history[event.data.i].replaceWith(setup_action(event.data.param, event.data.i));
 				params.actions[event.data.i] = event.data.param;
 
-				delete(div_history[event.data.i]);
+				delete (div_history[event.data.i]);
 
 				save_params();
 				return false;
@@ -198,7 +203,7 @@ function delete_action(id, div) {
 		$(this).replaceWith(del).fadeIn("swing");
 
 		div_history[id] = del;
-		delete(params.actions[id]);
+		delete (params.actions[id]);
 
 		save_params();
 	});
@@ -258,8 +263,8 @@ function setup_action(param, id) {
 	setting.append(list);
 
 	var edit = $("<a href='#' class='button edit'>Edit</a>").click({
-			'i': id
-		},
+		'i': id
+	},
 		function (event) {
 			load_action(event.data.i, $(this).parent().parent());
 			return false;
@@ -267,8 +272,8 @@ function setup_action(param, id) {
 	);
 
 	var del = $("<a href='#' class='button delete'>Delete</a>").click({
-			"i": id
-		},
+		"i": id
+	},
 		function (event) {
 			delete_action(event.data.i, $(this).parent());
 			return false;
