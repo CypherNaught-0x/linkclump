@@ -1,16 +1,16 @@
 {
   "name": "linkclump",
-  "description": "Chrome extension",
+  "description": "Chrome and Firefox extension",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benblack86/linkclump.git"
+    "url": "git+https://github.com/ChristophHess/linkclump.git"
   },
   "bugs": {
-    "url": "https://github.com/benblack86/linkclump/issues"
+    "url": "https://github.com/ChristophHess/linkclump/issues"
   },
-  "homepage": "https://github.com/benblack86/linkclump#readme",
+  "homepage": "https://github.com/ChristophHess/linkclump#readme",
   "devDependencies": {
-    "eslint": "^6.7.1",
-    "webextension-polyfill": "^0.6.0"
+    "eslint": "^8.0.0",
+    "webextension-polyfill": "^0.9.0"
   }
 }
